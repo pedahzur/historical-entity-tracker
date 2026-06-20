@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# uv / virtualenv
+.venv/
+venv/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Pipeline outputs (extract.py / resolve.py write JSON)
+*.json
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
