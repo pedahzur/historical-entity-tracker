@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Historical Entity Tracker"
+type: software
+authors:
+  - family-names: Pedahzur
+    given-names: Ami
+    orcid: "https://orcid.org/0000-0002-0925-4993"
+    affiliation: "University of Haifa"
+repository-code: "https://github.com/pedahzur/historical-entity-tracker"
+abstract: >-
+  A tool for tracing people, organizations, places, and events across a
+  multilingual historical corpus to support relative causality analysis.
+  LLM structured outputs extract entities and events grounded in exact
+  source quotes; cross-document and cross-language resolution proposes
+  confidence-scored links; a historian adjudicates every link in a
+  review workspace. Co-presence is treated as a hypothesis, not a fact.
+keywords:
+  - named entity recognition
+  - entity resolution
+  - historical methods
+  - multilingual corpora
+  - large language models
+  - computational social science
+license: MIT
+version: 0.1.0
+date-released: 2026-07-09
