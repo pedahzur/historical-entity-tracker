@@ -49,3 +49,8 @@ python notion_sink.py resolved.json
 ```
 
 See `docs/DEVELOPMENT_LOG.md` for the full design record, decisions, and next steps.
+
+
+## AI-assisted workflow
+
+Model: Claude (`claude-opus-4-8`), used via structured outputs for both extraction and resolution. Prompt strategy: per-document entity/event extraction grounded in exact source quotes (`extract.py`), followed by blocking plus LLM-based adjudication for cross-document and cross-language resolution (`resolve.py`). Human validation: every proposed link is reviewed, approved, or rejected by a historian in the Notion workspace before being treated as established. Not yet validated: links awaiting historian review in Notion, and the accuracy of multilingual extraction has not been independently audited.
