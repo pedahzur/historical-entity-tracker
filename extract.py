@@ -10,8 +10,8 @@ Usage:
     python extract.py examples/yom_kippur_excerpt.txt --out result.json
 
 This is the foundation step. Cross-document entity resolution (deciding when two
-mentions are the same person/unit/place) is the next layer and is intentionally not
-done here — each document is extracted independently first.
+mentions are the same person/unit/place) is intentionally handled later by
+`resolve.py` — each document is extracted independently first.
 """
 
 from __future__ import annotations
@@ -73,7 +73,7 @@ def extract(client: anthropic.Anthropic, text: str) -> Extraction:
     if response.stop_reason == "max_tokens":
         print(
             "WARNING: hit max_tokens — extraction may be truncated. "
-            "For long documents, split into sections (see README).",
+            "For long documents, split the input into smaller sections.",
             file=sys.stderr,
         )
     if response.parsed_output is None:

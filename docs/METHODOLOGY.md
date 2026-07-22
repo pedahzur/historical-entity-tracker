@@ -3,8 +3,7 @@
 **Status:** working methodological note. This document positions the tool within
 existing social-science and digital-humanities methods, states precisely what it
 does and does not claim, and defines the evidentiary logic behind its confidence
-scores. It is the theoretical anchor for the design decisions recorded in
-`DEVELOPMENT_LOG.md`.
+scores. It is the theoretical anchor for the prototype and its public explanation.
 
 ---
 
@@ -124,8 +123,8 @@ Three elements are genuinely novel in combination:
 - The tool generates hypotheses; it does not test them. Causal claims remain the
   researcher's responsibility.
 - Confidence scores are model-derived estimates, not calibrated probabilities,
-  until validated against a benchmark (see `DEVELOPMENT_LOG.md §9` and the HIPE
-  benchmark in `PRIOR_ART.md §4`).
+  until validated against a benchmark (see the HIPE benchmark in
+  `PRIOR_ART.md §4`).
 - Extraction and resolution quality on noisy, low-resource, or non-Gregorian-dated
   material is not yet independently audited.
 - Absence of a documented link is not evidence of absence of a connection; the
@@ -133,9 +132,8 @@ Three elements are genuinely novel in combination:
 
 ## 7. Relationship to the design decisions
 
-This methodology motivates several decisions already recorded in
-`DEVELOPMENT_LOG.md §2`: source quote on every item (D5), reversible and
-human-reviewable merges (D6), never silent-merging at medium confidence (D6),
-and the review-ready-from-day-one data model (D4). The two-axis confidence
-(§4.1) and independent-provenance tracking (§4.2) are proposed **extensions** to
-the schema arising from this note and are not yet implemented.
+This methodology motivates several decisions already implemented in the prototype:
+a source quote on every item, reversible and human-reviewable merges, no silent
+merge at medium confidence, and a review-ready data model from the beginning. The
+two-axis confidence (§4.1) and independent-provenance tracking (§4.2) are proposed
+**extensions** to the schema and are not yet implemented.

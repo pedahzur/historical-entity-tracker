@@ -4,7 +4,7 @@ Every extracted item carries an exact supporting quote (`source`) so each fact c
 be traced back to the document — essential for scholarly causality claims. Events,
 relationships, and presence assertions reference other entities by their
 document-local id (e.g. "p1", "u2"), which keeps the cross-document entity-resolution
-step (planned next) cleanly separated from per-document extraction.
+step cleanly separated from per-document extraction.
 """
 
 from __future__ import annotations
