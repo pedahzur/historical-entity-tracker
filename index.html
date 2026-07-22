@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A source-grounded research prototype for tracing people, places, organizations, and events across multilingual historical archives."
+    />
+    <meta name="theme-color" content="#173b32" />
+    <meta property="og:title" content="Historical Entity Tracker" />
+    <meta
+      property="og:description"
+      content="Trace the connections that turn events into history—without losing the evidence."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pedahzur.github.io/historical-entity-tracker/" />
+    <title>Historical Entity Tracker — Trace connections, preserve evidence</title>
+    <link rel="canonical" href="https://pedahzur.github.io/historical-entity-tracker/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <noscript><style>[data-reveal] { opacity: 1; transform: none; }</style></noscript>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Historical Entity Tracker home">
+        <span class="brand-mark" aria-hidden="true">H</span>
+        <span>
+          <strong>Historical Entity Tracker</strong>
+          <small>Research prototype</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <span></span><span></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="#purpose">Purpose</a>
+        <a href="#method">Method</a>
+        <a href="#principles">Principles</a>
+        <a href="#status">Status</a>
+        <a class="nav-cta" href="https://github.com/pedahzur/historical-entity-tracker">View source</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow"><span></span> Multilingual history · source-grounded AI</p>
+          <h1>Trace the connections that turn events into <em>history.</em></h1>
+          <p class="hero-lede">
+            Historical Entity Tracker finds possible links between people, places,
+            organizations, and events across languages—while keeping every claim tied
+            to the words that support it.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-light" href="#method">Explore the method <span>↓</span></a>
+            <a class="text-link" href="https://github.com/pedahzur/historical-entity-tracker/blob/main/docs/METHODOLOGY.md">Read the methodology <span>↗</span></a>
+          </div>
+        </div>
+
+        <div class="evidence-map" aria-label="Illustration of two multilingual source mentions connected to one historical person" data-reveal>
+          <div class="map-label">Cross-language identity · prototype example</div>
+          <article class="source-card source-card-he">
+            <div class="source-meta"><span>HE</span> Hebrew source · 1930s</div>
+            <blockquote lang="he" dir="rtl">״פלוגות הלילה המיוחדות של אורד וינגייט״</blockquote>
+            <p>Exact source fragment retained</p>
+          </article>
+
+          <article class="source-card source-card-en">
+            <div class="source-meta"><span>EN</span> English source · WWII</div>
+            <blockquote>“Orde Wingate … the Special Night Squads”</blockquote>
+            <p>Exact source fragment retained</p>
+          </article>
+
+          <div class="map-line map-line-a" aria-hidden="true"></div>
+          <div class="map-line map-line-b" aria-hidden="true"></div>
+          <div class="entity-node">
+            <span class="node-type">Person</span>
+            <strong>Orde Wingate</strong>
+            <small>אורד וינגייט</small>
+            <span class="node-state">Candidate identity match</span>
+          </div>
+          <div class="confidence-note"><span></span> Review before treating as established</div>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="Core commitments">
+        <div><span>01</span><strong>Any language</strong><small>Names stay in their original script.</small></div>
+        <div><span>02</span><strong>Every claim has a source</strong><small>Verbatim quotes preserve provenance.</small></div>
+        <div><span>03</span><strong>Humans decide</strong><small>Suggestions remain open to review.</small></div>
+      </section>
+
+      <section class="section purpose" id="purpose">
+        <div class="section-heading" data-reveal>
+          <p class="kicker">The missing layer</p>
+          <h2>Archives hold fragments. Historical explanation depends on the links between them.</h2>
+        </div>
+        <div class="purpose-grid">
+          <div class="purpose-copy" data-reveal>
+            <p class="lead">
+              Event datasets can catalogue thousands of occurrences. Close reading can
+              reconstruct a causal chain with great care. Between them sits a costly
+              research problem: discovering which fragments may belong together.
+            </p>
+            <p>
+              A person can be named differently across scripts. An organization can
+              change titles. A date can be approximate. Evidence of a relationship can
+              be scattered across documents that no single researcher would normally
+              read side by side.
+            </p>
+            <p>
+              This project explores a careful middle layer: use machines to widen the
+              search for connections, then give researchers the evidence and uncertainty
+              they need to judge each one.
+            </p>
+          </div>
+          <aside class="thesis-card" data-reveal>
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <blockquote>Same place + same time is a hypothesis, not a fact.</blockquote>
+            <p>
+              Co-presence can suggest where to investigate. It does not prove that two
+              people met—and it certainly does not prove causality.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section method" id="method">
+        <div class="section-heading section-heading-split" data-reveal>
+          <div>
+            <p class="kicker">From document to hypothesis</p>
+            <h2>A pipeline designed for inspection, not black-box answers.</h2>
+          </div>
+          <p>
+            Each stage preserves the path back to the source. Uncertainty is a feature
+            of the record, not something hidden from the researcher.
+          </p>
+        </div>
+
+        <ol class="process-grid">
+          <li data-reveal>
+            <span class="step-number">01</span>
+            <div class="step-icon" aria-hidden="true">Aa</div>
+            <h3>Read across languages</h3>
+            <p>Extract people, organizations, places, dates, events, relationships, and presence from unstructured text.</p>
+            <small>Original script + romanized form</small>
+          </li>
+          <li data-reveal>
+            <span class="step-number">02</span>
+            <div class="step-icon" aria-hidden="true">“ ”</div>
+            <h3>Anchor every item</h3>
+            <p>Keep an exact quotation with every record so a claim can always be checked against its source.</p>
+            <small>Provenance travels with the data</small>
+          </li>
+          <li data-reveal>
+            <span class="step-number">03</span>
+            <div class="step-icon" aria-hidden="true">↔</div>
+            <h3>Propose connections</h3>
+            <p>Compare names and context across documents, then separate likely matches from uncertain candidates.</p>
+            <small>Cross-document identity resolution</small>
+          </li>
+          <li data-reveal>
+            <span class="step-number">04</span>
+            <div class="step-icon" aria-hidden="true">✓</div>
+            <h3>Put judgment back in</h3>
+            <p>Present candidate links, quotations, and reasoning for a historian to approve, reject, or revisit.</p>
+            <small>Decisions stay human and reversible</small>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section demonstration">
+        <div class="demo-panel" data-reveal>
+          <div class="demo-copy">
+            <p class="kicker kicker-light">What the prototype surfaced</p>
+            <h2>One person became a bridge between two bodies of material.</h2>
+            <p>
+              In an early Hebrew–English test, the pipeline reconciled mentions of
+              Orde Wingate and the Special Night Squads across languages. That identity
+              link connected an Israeli special-forces lineage to material about the
+              British wartime special-forces ecosystem.
+            </p>
+            <p class="demo-caveat">
+              <span>Important</span> This demonstrates the workflow. It is not an
+              independent evaluation of multilingual accuracy.
+            </p>
+          </div>
+          <div class="bridge-visual" aria-label="A conceptual bridge from Hebrew sources through Orde Wingate to English sources">
+            <div class="bridge-column">
+              <span>Hebrew corpus</span>
+              <strong>Israeli SOF roots</strong>
+              <small>People · units · places</small>
+            </div>
+            <div class="bridge-track" aria-hidden="true"><i></i><b>Bridge node</b><i></i></div>
+            <div class="bridge-column bridge-column-right">
+              <span>English corpus</span>
+              <strong>British WWII SOF</strong>
+              <small>People · units · events</small>
+            </div>
+            <div class="bridge-person"><span>Person</span><strong>Orde<br />Wingate</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section principles" id="principles">
+        <div class="section-heading" data-reveal>
+          <p class="kicker">Research principles</p>
+          <h2>Scale without overclaiming.</h2>
+        </div>
+        <div class="principle-list">
+          <article data-reveal>
+            <span>01</span>
+            <div><h3>Evidence before elegance</h3><p>Every extracted item retains the wording that supports it, even when that makes the data messier.</p></div>
+          </article>
+          <article data-reveal>
+            <span>02</span>
+            <div><h3>Suggestion, not verdict</h3><p>Identity matches and possible relationships are candidates for review, not facts smuggled in by automation.</p></div>
+          </article>
+          <article data-reveal>
+            <span>03</span>
+            <div><h3>Two kinds of uncertainty</h3><p>Evidence that a connection exists is different from evidence that the connection caused a later event.</p></div>
+          </article>
+          <article data-reveal>
+            <span>04</span>
+            <div><h3>Independent sources matter</h3><p>Three documents repeating one testimony should not count as three independent chains of evidence.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section status" id="status">
+        <div class="status-grid">
+          <div class="status-intro" data-reveal>
+            <p class="kicker">Project status</p>
+            <h2>A working prototype with an intentionally honest boundary.</h2>
+            <p>
+              Extraction, source anchoring, cross-language entity resolution, and a
+              Notion review export exist today. The larger research system is still being
+              built and evaluated.
+            </p>
+            <a class="button button-dark" href="https://github.com/pedahzur/historical-entity-tracker">Explore the repository <span>↗</span></a>
+          </div>
+          <div class="status-board" data-reveal>
+            <div class="status-row"><span class="status-dot done"></span><strong>Working now</strong><p>Structured extraction, exact quotes, multilingual name resolution, review export</p></div>
+            <div class="status-row"><span class="status-dot next"></span><strong>Next</strong><p>Evaluation corpus, durable storage, idempotent sync, co-presence candidates</p></div>
+            <div class="status-row"><span class="status-dot future"></span><strong>Future</strong><p>Researcher interface, linked timeline, map, network, and source-aware questions</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing">
+        <div data-reveal>
+          <p class="kicker kicker-light">The broader aim</p>
+          <h2>Help historians search farther without asking them to trust less carefully.</h2>
+        </div>
+        <div class="closing-links" data-reveal>
+          <a href="https://github.com/pedahzur/historical-entity-tracker/blob/main/docs/METHODOLOGY.md">Methodology <span>↗</span></a>
+          <a href="https://github.com/pedahzur/historical-entity-tracker/blob/main/docs/PRIOR_ART.md">Prior art <span>↗</span></a>
+          <a href="https://github.com/pedahzur/historical-entity-tracker/blob/main/docs/UI_PROPOSAL.md">Interface proposal <span>↗</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="brand footer-brand"><span class="brand-mark" aria-hidden="true">H</span><span><strong>Historical Entity Tracker</strong><small>Open research prototype</small></span></div>
+      <p>MIT licensed · Built for source-grounded historical inquiry</p>
+      <p>© <span data-year>2026</span> · <a href="https://github.com/pedahzur/historical-entity-tracker">GitHub</a></p>
+    </footer>
+  </body>
+</html>

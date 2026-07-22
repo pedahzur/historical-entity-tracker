@@ -1,56 +1,102 @@
 # Historical Entity Tracker
 
-A tool for tracing people, organizations, places, and events across a **multilingual**
-historical corpus, to support relative causality analysis of historical processes.
+**Project page:** https://pedahzur.github.io/historical-entity-tracker/
 
-It scans unstructured documents in any language, extracts named entities and events
-(each grounded in an exact source quote), resolves which mentions refer to the same
-real-world entity across documents and languages, and surfaces **source-grounded,
-confidence-scored** links (relationships and co-presence) for a historian to review.
+Historical sources rarely tell a complete story in one place. A person appears under
+different spellings, an organization changes names, a location is described in
+another language, and the connection between two events may be scattered across
+documents written decades apart.
 
-> Methodological stance: "same place + same time" is a **hypothesis, not a fact**.
-> The tool proposes candidate links with a confidence score and a traceable quote;
-> the historian adjudicates. Nothing is asserted as proven causality.
+**Historical Entity Tracker is a research prototype for finding that connective
+tissue without hiding the evidence.** It turns multilingual source text into
+structured, reviewable hypotheses about people, organizations, places, events, and
+their relationships. Every extracted claim retains an exact source quote, and every
+proposed cross-document link is scored and left open to human judgment.
 
-## Pipeline
+> Same place + same time is a hypothesis, not a fact.
 
+The project sits between large-scale event data and close qualitative process
+tracing: it helps researchers discover candidate links at corpus scale, but it does
+not claim to prove that people met or that one event caused another.
+
+## What it does
+
+```text
+multilingual documents
+  -> extract entities, events, dates, relationships, and presence
+  -> preserve the exact quote supporting every item
+  -> reconcile names and identities across documents and languages
+  -> send uncertain matches to a historian for review
+  -> produce a traceable foundation for timelines, maps, and network analysis
 ```
-documents (digital text, any language)
-   → extract.py    per-document extraction (Claude structured outputs)  → result.json
-   → resolve.py    cross-document / cross-language entity resolution     → resolved.json
-   → notion_sink.py  write to the Notion review workspace
-   → historian reviews / approves / rejects in Notion
-```
 
-## Files
+The current prototype has four parts:
 
-- `schema.py` — Pydantic extraction schema (entities, events, relationships, presence)
-- `extract.py` — per-document extraction via `claude-opus-4-8` + structured outputs
-- `resolve.py` — cross-document entity resolution (blocking → LLM adjudication → tiered decision)
-- `notion_sink.py` — pushes resolved output into the Notion review databases
-- `examples/` — sample document
-- `docs/` — development log, prior-art survey, UI proposal
+- `schema.py` defines the source-grounded extraction model.
+- `extract.py` extracts structured records from one document.
+- `resolve.py` proposes cross-document and cross-language identity matches.
+- `notion_sink.py` sends entities and candidate links to a Notion review workspace.
 
-## Setup (with uv)
+## Why it matters
+
+Event databases are good at cataloguing what happened. Process tracing is good at
+reasoning carefully about how events may be connected. The gap is the expensive,
+manual work of discovering possible connections across a large and multilingual
+archive.
+
+This project explores a careful middle layer: automated hypothesis generation with
+provenance, uncertainty, and human review built into the data model. The machine
+widens the search; the historian remains responsible for interpretation.
+
+## Prototype evidence
+
+The pipeline has been exercised on Hebrew and English source material. In that test,
+it reconciled the Hebrew and English mentions of Orde Wingate and the Special Night
+Squads, surfacing a cross-language bridge between two bodies of historical material.
+This is a demonstration of the workflow, not an independent accuracy evaluation.
+
+## Current limitations
+
+- Extraction quality has not yet been independently benchmarked across languages.
+- Long documents still need sectioned extraction and merge logic.
+- Entity matching currently uses a romanized name key before model adjudication.
+- Resolution state is in memory; there is no durable graph store yet.
+- Presence is extracted, but candidate co-presence links are not yet aggregated.
+- The Notion writer creates duplicate rows when run more than once.
+- Confidence scores are model estimates, not calibrated probabilities.
+
+## Run the prototype
+
+Requires Python 3.10+ and [`uv`](https://docs.astral.sh/uv/).
 
 ```bash
-uv add anthropic pydantic notion-client
+uv sync
 export ANTHROPIC_API_KEY=...
-export NOTION_TOKEN=...        # for notion_sink.py
+export NOTION_TOKEN=...  # only needed for the optional Notion export
+
+uv run python extract.py examples/yom_kippur_excerpt.txt --out result.json
+uv run python resolve.py result.json --out resolved.json
+uv run python notion_sink.py resolved.json
 ```
 
-## Run (end to end)
+To preview the public-facing project page, open `index.html` or serve the repository
+directory with any static web server.
 
-```bash
-python extract.py doc_he.txt --out r1.json
-python extract.py doc_en.txt --out r2.json
-python resolve.py r1.json r2.json --out resolved.json
-python notion_sink.py resolved.json
-```
+## Documentation
 
-See `docs/DEVELOPMENT_LOG.md` for the full design record, decisions, and next steps.
-
+- [Methodology](docs/METHODOLOGY.md) — claims, evidentiary logic, and limits
+- [Prior art](docs/PRIOR_ART.md) — related digital-humanities tools and methods
+- [Interface proposal](docs/UI_PROPOSAL.md) — a historian-friendly review workflow
 
 ## AI-assisted workflow
 
-Model: Claude (`claude-opus-4-8`), used via structured outputs for both extraction and resolution. Prompt strategy: per-document entity/event extraction grounded in exact source quotes (`extract.py`), followed by blocking plus LLM-based adjudication for cross-document and cross-language resolution (`resolve.py`). Human validation: every proposed link is reviewed, approved, or rejected by a historian in the Notion workspace before being treated as established. Not yet validated: links awaiting historian review in Notion, and the accuracy of multilingual extraction has not been independently audited.
+The prototype uses Claude (`claude-opus-4-8`) with structured outputs for extraction
+and pairwise entity adjudication. Prompts require verbatim source quotes and
+conservative date handling. Proposed links are designed for approval or rejection by
+a researcher before they are treated as established. The software and its
+multilingual accuracy remain experimental.
+
+## License and citation
+
+Released under the [MIT License](LICENSE). Citation metadata is available in
+[`CITATION.cff`](CITATION.cff).
